@@ -1,7 +1,5 @@
 package com.example.KFHAuto.SecureBankingSystem.entity;
 
-import com.example.KFHAuto.SecureBankingSystem.util.enums.Status;
-
 import javax.persistence.*;
 
     @Entity
@@ -22,8 +20,6 @@ import javax.persistence.*;
         @Column(name = "email", nullable = false)
         private String email;
 
-        @Enumerated(EnumType.STRING)
-        private Status status;
 
         @Column(name="user_name", nullable = false)
         private String username;
@@ -66,13 +62,7 @@ import javax.persistence.*;
             this.email = email;
         }
 
-        public Status getStatus() {
-            return status;
-        }
 
-        public void setStatus(Status status) {
-            this.status = status;
-        }
 
         public String getUsername() {
             return username;
