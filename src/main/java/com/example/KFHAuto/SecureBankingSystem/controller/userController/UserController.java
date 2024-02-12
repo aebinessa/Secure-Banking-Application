@@ -1,6 +1,10 @@
 package com.example.KFHAuto.SecureBankingSystem.controller.userController;
 
 
+import com.example.KFHAuto.SecureBankingSystem.bo.user.CreateUserRequest;
+import com.example.KFHAuto.SecureBankingSystem.bo.user.UpdateUserRequest;
+import com.example.KFHAuto.SecureBankingSystem.entity.UserEntity;
+import com.example.KFHAuto.SecureBankingSystem.service.user.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,16 +35,7 @@ public class UserController {
     }
 
 
-    @PutMapping("/update-user-status")
-    public ResponseEntity<String> updateUser(@RequestParam Long userId,@RequestBody UpdateUserRequest updateUserRequest){
-        try {
-            userService.updateUserStatus(userId,updateUserRequest);
 
-        }catch (IllegalArgumentException e ){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-        return ResponseEntity.ok("User Updated successfully");
-    }
     @GetMapping("/user-list")
     public List<UserEntity> getAllUsers(){
         return userService.allUsers();
