@@ -4,6 +4,7 @@ package com.example.KFHAuto.SecureBankingSystem.service.auth;
 import com.example.KFHAuto.SecureBankingSystem.bo.customUserDetails.CustomUserDetails;
 import com.example.KFHAuto.SecureBankingSystem.entity.UserEntity;
 import com.example.KFHAuto.SecureBankingSystem.repository.UserRepository;
+import javassist.NotFoundException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
