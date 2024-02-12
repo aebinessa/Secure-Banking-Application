@@ -2,14 +2,11 @@ package com.example.KFHAuto.SecureBankingSystem.bo.auth;
 
 public class CreateSignupRequest {
     private String username;
-
+    private String email;
+    private String phoneNumber;
     private String password;
 
-    private String phoneNumber;
-
-    private String email;
-
-    private String name;
+    private String address;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -27,12 +24,12 @@ public class CreateSignupRequest {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getUsername() {
