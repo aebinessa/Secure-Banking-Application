@@ -2,7 +2,9 @@ package com.example.KFHAuto.SecureBankingSystem.entity;
 
 
 import com.example.KFHAuto.SecureBankingSystem.util.enums.Roles;
-import jakarta.persistence.*;
+
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "role")
