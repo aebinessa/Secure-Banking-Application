@@ -1,12 +1,12 @@
 package com.example.KFHAuto.SecureBankingSystem.controller.userController;
 
 
+import com.example.KFHAuto.SecureBankingSystem.bo.user.GetUserRequest;
 import com.example.KFHAuto.SecureBankingSystem.entity.UserEntity;
-import com.example.KFHAuto.SecureBankingSystem.repository.UserRepository;
+
+import com.example.KFHAuto.SecureBankingSystem.service.admin.AdminService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,14 +14,29 @@ import java.util.List;
 @RequestMapping("/api/v1/admin")
 public class AdminController {
 
-    private final UserRepository userRepository;
-    public AdminController(UserRepository userRepository){
-        this.userRepository=userRepository;
+    private final AdminService adminService;
+    public AdminController(AdminService adminService){
+        this.adminService=adminService;
 
     }
     @GetMapping("/users")
     public ResponseEntity<List<UserEntity>> getUsers(){
-        List<UserEntity> users = userRepository.findAll();
+        List<UserEntity> users = adminService.getUsers();
         return ResponseEntity.ok().body(users);
     }
+    @GetMapping("/user")
+    public ResponseEntity<GetUserRequest> getUser(@RequestParam int id){
+        GetUserRequest user = adminService.getUser(id);
+        return ResponseEntity.ok().body(user);
+
+
+
+
+    }
+    @DeleteMapping("delete-user")
+    public ResponseEntity<Void> deleteUser(@RequestParam int id){
+        adminService.deleteUser(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

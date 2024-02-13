@@ -41,11 +41,11 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         if(!request.getServletPath().equals(AUTH_PATH + "/login") && authorizationHeader != null && authorizationHeader.startsWith(BEARER)){
             String token = authorizationHeader.substring(7);
             if(jwtUtil.isTokenValid(token)){
-                String usernmae = jwtUtil.getUsernameFromToken(token);
-                if (usernmae == null){
+                String username = jwtUtil.getUsernameFromToken(token);
+                if (username == null){
                     throw new UserNotFoundException("user not found");
                 }
-                UserDetails userDetails = userDetailsService.loadUserByUsername(usernmae);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
