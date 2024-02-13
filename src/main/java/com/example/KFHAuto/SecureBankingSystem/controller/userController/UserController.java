@@ -2,6 +2,7 @@ package com.example.KFHAuto.SecureBankingSystem.controller.userController;
 
 
 import com.example.KFHAuto.SecureBankingSystem.bo.user.CreateUserRequest;
+import com.example.KFHAuto.SecureBankingSystem.bo.user.GetUserRequest;
 import com.example.KFHAuto.SecureBankingSystem.bo.user.UpdateUserRequest;
 import com.example.KFHAuto.SecureBankingSystem.entity.UserEntity;
 import com.example.KFHAuto.SecureBankingSystem.service.user.UserService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/user")
 public class UserController {
     private final UserService userService;
     public UserController(UserService userService){
@@ -39,5 +41,15 @@ public class UserController {
     @GetMapping("/user-list")
     public List<UserEntity> getAllUsers(){
         return userService.allUsers();
+    }
+    @PutMapping("/update-user")
+    public ResponseEntity<?> updateUser(@RequestBody UpdateUserRequest updateUserRequest, @RequestParam int id){
+        userService.updateUser(updateUserRequest, id);
+        return ResponseEntity.ok().build();
+    }
+    @GetMapping("/get-user")
+    public ResponseEntity<GetUserRequest> getUser(@RequestParam int id){
+        GetUserRequest getUserRequest = userService.getUser(id);
+        return ResponseEntity.ok().body(getUserRequest);
     }
 }

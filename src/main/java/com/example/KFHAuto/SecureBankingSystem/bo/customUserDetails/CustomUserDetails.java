@@ -11,15 +11,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CustomUserDetails implements UserDetails {
-    private Long id;
+    private int id;
     private String userName;
     private String password;
     private String role;
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

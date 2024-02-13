@@ -43,7 +43,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public void signup(CreateSignupRequest createSignupRequest) {
-     //   RoleEntity roleEntity= roleRepository.findRoleEntityByTitle(Roles.USER.name())
+        RoleEntity roleEntity= roleRepository.findRoleEntityByTitle(Roles.USER.name()).orElseThrow();
 
         UserEntity user= new UserEntity();
         user.setUsername(createSignupRequest.getUsername());
@@ -69,12 +69,12 @@ public class AuthServiceImpl implements AuthService{
 
         String accessToken = jwtUtil.generateToken(userDetails);
 
-        AuthinticationResponse response = new AuthinticationResponse();
-        response.setId(userDetails.getId());
-        response.setUsername(userDetails.getUsername());
-        response.setRole(userDetails.getRole());
-        response.setToken("Bearer "+accessToken);
-        return response;
+        AuthinticationResponse authinticationResponse = new AuthinticationResponse();
+        authinticationResponse.setId(userDetails.getId());
+        authinticationResponse.setUsername(userDetails.getUsername());
+        authinticationResponse.setRole(userDetails.getRole());
+        authinticationResponse.setToken("Bearer "+accessToken);
+        return authinticationResponse;
     }
 
     @Override

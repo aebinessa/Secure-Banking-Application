@@ -9,10 +9,10 @@ import javax.persistence.*;
         @Id
         @Column(name = "id", nullable = false)
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private int id;
 
-        @Column(name = "name", nullable = false)
-        private String name;
+        @Column(name = "user_name", nullable = false)
+        private String username;
 
         @Column(name = "phone_number", nullable = false)
         private String phoneNumber;
@@ -21,29 +21,45 @@ import javax.persistence.*;
         private String email;
 
 
-        @Column(name="user_name", nullable = false)
-        private String username;
-
         @Column(name = "password",nullable = false)
         private String password;
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        @Column(name = "address",nullable = false)
+        private String address;
 
         @OneToOne
         @JoinColumn(name = "role_id")
         private RoleEntity roles;
-        public Long getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(Long id) {
+        public void setId(int id) {
             this.id = id;
         }
 
         public String getName() {
-            return name;
+            return username;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setName(String username) {
+            this.username = username;
         }
 
         public String getPhoneNumber() {
@@ -64,13 +80,7 @@ import javax.persistence.*;
 
 
 
-        public String getUsername() {
-            return username;
-        }
 
-        public void setUsername(String username) {
-            this.username = username;
-        }
 
         public String getPassword() {
             return password;

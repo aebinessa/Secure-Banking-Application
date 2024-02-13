@@ -2,16 +2,16 @@ package com.example.KFHAuto.SecureBankingSystem.bo.auth;
 
 
 public class AuthinticationResponse {
-    private long id;
+    private int id;
     private String username;
     private String role;
     private String token;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
