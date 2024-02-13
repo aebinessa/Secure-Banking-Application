@@ -1,7 +1,8 @@
 package com.example.KFHAuto.SecureBankingSystem.controller.userController;
 
 
-import com.example.KFHAuto.SecureBankingSystem.bo.user.CreateUserRequest;
+import com.example.KFHAuto.SecureBankingSystem.bo.auth.CreateSignupRequest;
+
 import com.example.KFHAuto.SecureBankingSystem.bo.user.GetUserRequest;
 import com.example.KFHAuto.SecureBankingSystem.bo.user.UpdateUserRequest;
 import com.example.KFHAuto.SecureBankingSystem.entity.UserEntity;
@@ -22,14 +23,14 @@ public class UserController {
     }
 
     @PostMapping("/create-user")
-    public ResponseEntity<String> createUser(@RequestBody CreateUserRequest createUserRequest){
+    public ResponseEntity<String> createUser(@RequestBody CreateSignupRequest createSignupRequest){
         try {
-            userService.saveUser((createUserRequest));
+            userService.saveUser((createSignupRequest));
         }catch (IllegalArgumentException e ){
 
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-        userService.saveUser(createUserRequest);
+        userService.saveUser(createSignupRequest);
         return ResponseEntity.ok("User has been created !!!");
 
 

@@ -1,6 +1,7 @@
 package com.example.KFHAuto.SecureBankingSystem.service.user;
 
-import com.example.KFHAuto.SecureBankingSystem.bo.user.CreateUserRequest;
+import com.example.KFHAuto.SecureBankingSystem.bo.auth.CreateSignupRequest;
+
 import com.example.KFHAuto.SecureBankingSystem.bo.user.GetUserRequest;
 import com.example.KFHAuto.SecureBankingSystem.bo.user.UpdateUserRequest;
 import com.example.KFHAuto.SecureBankingSystem.entity.AccountEntity;
@@ -23,12 +24,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(CreateUserRequest createUserRequest) {
+    public void saveUser(CreateSignupRequest createSignupRequest) {
         UserEntity userEntity = new UserEntity();
-        userEntity.setUsername(createUserRequest.getUsername());
-        userEntity.setPhoneNumber(createUserRequest.getPhoneNumber());
-        userEntity.setPassword(createUserRequest.getPassword());
-        userEntity.setEmail(createUserRequest.getEmail());
+        userEntity.setUsername(createSignupRequest.getUsername());
+        userEntity.setPhoneNumber(createSignupRequest.getPhoneNumber());
+        userEntity.setPassword(createSignupRequest.getPassword());
+        userEntity.setEmail(createSignupRequest.getEmail());
         userRepository.save(userEntity);
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setUser(userEntity);

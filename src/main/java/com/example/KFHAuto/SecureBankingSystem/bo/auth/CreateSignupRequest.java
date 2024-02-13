@@ -8,6 +8,7 @@ public class CreateSignupRequest {
 
     private String address;
 
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
